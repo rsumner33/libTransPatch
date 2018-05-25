@@ -1,4 +1,4 @@
-﻿/* ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
 Transonic Patch Library
 Copyright (C) 1995-2017  George E Greaney
 
@@ -53,9 +53,12 @@ namespace Transonic.Patch
         readonly Brush TITLECOLOR = Brushes.Black;
         readonly Font TITLEFONT = SystemFonts.DefaultFont;
         readonly int FRAMEWIDTH = 100;
-        readonly int NEWPANELBARHEIGHT = 0;
-
-        public PatchBox()
+<<<        readonly int NEWPANELBARHEIGHT = 0;
+>>>>>>>+HEAD
+====
+           readonly int NEWPANELBARHEIGHT = 20;
+>>>>>>>-494325a
+      public PatchBox()
         {
             boxType = "PatchBox";
             boxNum = ++boxCount;
@@ -67,8 +70,12 @@ namespace Transonic.Patch
             title = "Box " + boxNum.ToString();
             titleBar.Location = frame.Location;
             titleBar.Width = FRAMEWIDTH;
-            titleBar.Height = 25;
-            nextPanelPos = titleBar.Bottom;
+<<<            titleBar.Height = 25;
+>>>>>>>+HEAD
+====
+               titleBar.Height = 40;
+>>>>>>>-494325a
+         nextPanelPos = titleBar.Bottom;
             frame.Height = nextPanelPos + NEWPANELBARHEIGHT;           //space at bottom of box for new panel bar
 
             panels = new List<PatchPanel>();
