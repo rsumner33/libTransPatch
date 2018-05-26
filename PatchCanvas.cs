@@ -49,13 +49,12 @@ namespace Transonic.Patch
 ====
        public class PatchCanvas : UserControl
     {
-        public IPatchView patchwin;
-        List<PatchBox> boxList;
-        List<PatchLine> lineList;
+        public IPatchView patchwin;         //the window that holds this canvas
+        List<PatchBox> boxList;             //the boxes on the canvas
+        List<PatchLine> lineList;           //the connector lines on the canvas
 
-        PatchBox selectedBox;
-        PatchPanel targetPanel;
-        PatchLine selectedLine;        
+        PatchBox selectedBox;           //currently selected box
+        PatchLine selectedLine;         //currently select line
 
         Point newBoxOrg;
 >>>>>>>-494325a
@@ -107,11 +106,14 @@ namespace Transonic.Patch
             this.BackColor = Color.FromArgb(0xF2, 0x85, 0x00);
             this.DoubleBuffered = true;
 
-            dragging = false;
-            connecting = false;
-            selectedBox = null;
-            targetPanel = null;
+            selectedBox = null;             //selecting
             selectedLine = null;
+            dragging = false;               //dragging
+            connecting = false;             //connecting
+            sourcePanel = null;
+            targetPanel = null;
+            tracking = false;
+            trackingPanel = null;
         }
 
 //- patch methods -------------------------------------------------------------
@@ -645,7 +647,9 @@ namespace Transonic.Patch
             {
                 removePatchLine(connectLine);                
             }
-            connectLine = null;
+
+            targetPanel = null;
+            sourcePanel = null;
             connecting = false;
 >>>>>>>-494325a
      }
